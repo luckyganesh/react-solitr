@@ -1,13 +1,13 @@
 {
-  "main.css": "/react-solitr/static/css/main.962ac356.chunk.css",
-  "main.js": "/react-solitr/static/js/main.d142c484.chunk.js",
-  "main.js.map": "/react-solitr/static/js/main.d142c484.chunk.js.map",
+  "main.css": "/react-solitr/static/css/main.8a45298e.chunk.css",
+  "main.js": "/react-solitr/static/js/main.10c62a33.chunk.js",
+  "main.js.map": "/react-solitr/static/js/main.10c62a33.chunk.js.map",
   "runtime~main.js": "/react-solitr/static/js/runtime~main.3809054a.js",
   "runtime~main.js.map": "/react-solitr/static/js/runtime~main.3809054a.js.map",
   "static/js/2.9bba1761.chunk.js": "/react-solitr/static/js/2.9bba1761.chunk.js",
   "static/js/2.9bba1761.chunk.js.map": "/react-solitr/static/js/2.9bba1761.chunk.js.map",
   "index.html": "/react-solitr/index.html",
-  "precache-manifest.7044202cda3ba5c524d413485bde81c1.js": "/react-solitr/precache-manifest.7044202cda3ba5c524d413485bde81c1.js",
+  "precache-manifest.6a3c8756c10dfa7670de30354214a863.js": "/react-solitr/precache-manifest.6a3c8756c10dfa7670de30354214a863.js",
   "service-worker.js": "/react-solitr/service-worker.js",
-  "static/css/main.962ac356.chunk.css.map": "/react-solitr/static/css/main.962ac356.chunk.css.map"
+  "static/css/main.8a45298e.chunk.css.map": "/react-solitr/static/css/main.8a45298e.chunk.css.map"
 }
