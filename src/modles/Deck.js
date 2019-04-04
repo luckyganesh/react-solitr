@@ -17,9 +17,13 @@ class Deck {
     }
 
     getCards(){
-        return this.openCards.splice(-1);
+        return this.openCards.slice(-1);
     }
     
+    removeCards(){
+        this.openCards.splice(-1);
+    }
+
     update(){
         if(this.closedCards.length === 0){
             this.closedCards = this.openCards.reverse();

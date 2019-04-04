@@ -9,6 +9,18 @@ class Card {
     getUnicode(){
         return this.unicode;
     }
+
+    isNextForReserved(card){
+      return (+this.number === card.number - 1) && (this.type === card.type);
+    }
+
+    checkNumber(number){
+      return this.number === number;
+    }
+
+    isNextForStack(card){
+      return (+this.number === +card.number + 1) && (this.color !== card.color);
+    }
 }
 
 export default Card;

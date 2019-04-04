@@ -36,7 +36,10 @@ class Game {
         const destination = this.getDestination(destinationDetails);
         const noOfCards = sourceDetails.split("_")[2];
         const cards = source.getCards(+noOfCards);
-        destination.addCards(cards);
+        const hasAdded = destination.addCards(cards);
+        if(hasAdded){
+            source.removeCards(+noOfCards);
+        }
     }
 
     getReservedPiles(){

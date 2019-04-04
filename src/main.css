@@ -1,5 +1,4 @@
 .body {
-    /* height:600px; */
     width: 800px;
 }
 
@@ -23,11 +22,9 @@
 
 
 .top-cards {
-    /* height: 150px; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* margin-bottom: 50px; */
 }
 
 .reserved-piles {

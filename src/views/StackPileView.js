@@ -34,9 +34,7 @@ class StackPileView extends React.Component {
 
   render() {
     const { stackPile, id, drag, drop, allowDrop } = this.props;
-    console.log(stackPile.hasCard(),id,stackPile.openCards.length);
     if (!stackPile.hasCard()) {
-      console.log("it came");
       return (
         <div
           className="stack-pile stack-pile-separator"
