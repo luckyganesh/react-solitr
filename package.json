@@ -2,7 +2,7 @@
   "name": "solitr",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://luckganesh.github.io/react-solitr/",
+  "homepage": "https://luckyganesh.github.io/react-solitr/",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "lodash": "^4.17.11",
