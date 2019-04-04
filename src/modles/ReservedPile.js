@@ -11,12 +11,12 @@ class ReservedPile {
         return this.cards[this.cards.length-1];
     }
 
-    addCard(card){
-        return this.cards.push(card);
+    addCards(cards){
+        this.cards = this.cards.concat(cards);
     }
 
-    getCard(){
-        return this.cards.pop();
+    getCards(){
+        return this.cards.splice(-1);
     }
 }
 

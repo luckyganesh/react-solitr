@@ -1,6 +1,7 @@
 import React from "react";
 import DeckView from "./DeckView";
 import ReservedPileView from "./ReservedPileView";
+import StackPileView from "./StackPileView";
 
 export default class GameView extends React.Component {
   constructor(props) {
@@ -17,20 +18,18 @@ export default class GameView extends React.Component {
   }
 
   allowDrop(ev) {
-    // console.log(ev);
     ev.preventDefault();
   }
-  
+
   drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
   }
-  
+
   drop(ev) {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    this.state.game.moveCard(data,ev.target.id);
+    const data = ev.dataTransfer.getData("text");
+    this.state.game.moveCard(data, ev.target.id);
     this.setState(state => state);
-    // ev.target.appendChild(document.getElementById(data));
   }
 
   renderReservedPiles() {
@@ -42,10 +41,32 @@ export default class GameView extends React.Component {
       reservedPileNumber++
     ) {
       reservedPilesJSX.push(
-        <ReservedPileView pile={reservedPiles[reservedPileNumber]} drag={this.drag} drop={this.drop} allowDrop={this.allowDrop} id={reservedPileNumber}/>
+        <ReservedPileView
+          pile={reservedPiles[reservedPileNumber]}
+          drag={this.drag}
+          drop={this.drop}
+          allowDrop={this.allowDrop}
+          id={reservedPileNumber}
+        />
       );
     }
     return <div class="reserved-piles">{reservedPilesJSX}</div>;
+  }
+
+  renderStackPiles() {
+    const stackPiles = this.state.game.getStackPiles();
+    const stackPilesJSX = stackPiles.map((stackPile, index) => {
+      return (
+        <StackPileView
+          stackPile={stackPile}
+          id={index}
+          drag={this.drag}
+          drop={this.drop}
+          allowDrop={this.allowDrop}
+        />
+      );
+    });
+    return <div className="stack-piles">{stackPilesJSX}</div>;
   }
 
   render() {
@@ -59,6 +80,7 @@ export default class GameView extends React.Component {
           />
           {this.renderReservedPiles()}
         </div>
+        {this.renderStackPiles()}
       </div>
     );
   }

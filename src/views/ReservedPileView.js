@@ -10,7 +10,7 @@ class ReservedPileView extends React.Component {
       const card = pile.getLastCard();
       return (
         <div
-          id={"reservedPile_" + this.props.id}
+          id={"reservedPiles_" + this.props.id}
           draggable="true"
           onDragStart={this.props.drag}
           className="card"
@@ -25,7 +25,7 @@ class ReservedPileView extends React.Component {
 
     return (
       <div
-        id={"reservedPile_" + this.props.id}
+        id={"reservedPiles_" + this.props.id}
         className="card"
         onDrop={this.props.drop}
         onDragOver={this.props.allowDrop}

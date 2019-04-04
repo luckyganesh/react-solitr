@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import lodash from 'lodash';
 
 //css
 import './main.css';
+
+//data
+import { Cards } from './data/cards';
 
 //view models
 import GameView from './views/GameView';
@@ -10,10 +14,9 @@ import GameView from './views/GameView';
 //game modles
 import Game from './modles/Game';
 import Deck from './modles/Deck';
-import { Cards } from './data/cards';
-import lodash from 'lodash';
 import Card from './modles/Card';
 import ReservedPile from './modles/ReservedPile';
+import StackPile from './modles/stackPile';
 
 const shuffledCards = lodash.shuffle(Cards).map(card => new Card(card));
 
@@ -30,7 +33,20 @@ for (let noOfReservedPiles = 0; noOfReservedPiles < 4; noOfReservedPiles++) {
     reservedPiles.push(reservedPile);
 }
 
+const stackPiles = [];
+for(let noOfStackPile = 0; noOfStackPile < 7;noOfStackPile++){
+    const closedCards = [];
+    for(let noOfClosedCards = 0; noOfClosedCards <= noOfStackPile - 1; noOfClosedCards++){
+        const card = shuffledCards.shift();
+        closedCards.push(card);
+    }
+    const openCards = [];
+    openCards.push(shuffledCards.shift());
+    const stackPile = new StackPile(closedCards,openCards);
+    stackPiles.push(stackPile);
+}
+
 const deck = new Deck(deckCards);
-const game = new Game(deck, reservedPiles);
+const game = new Game(deck, reservedPiles,stackPiles);
 
 ReactDOM.render(<GameView game={game} />, document.getElementById('root'));

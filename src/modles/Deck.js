@@ -16,8 +16,8 @@ class Deck {
         return this.openCards[this.openCards.length -1];
     }
 
-    getCard(){
-        return this.openCards.pop();
+    getCards(){
+        return this.openCards.splice(-1);
     }
     
     update(){

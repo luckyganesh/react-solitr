@@ -1,13 +1,18 @@
 class Game {
-    constructor(deck,reservedPiles){
+    constructor(deck,reservedPiles,stackPiles){
         this.deck = deck;
         this.reservedPiles = reservedPiles;
+        this.stackPiles = stackPiles;
     }
 
     getDeck(){
         return this.deck;
     }
 
+    getStackPiles(){
+        return this.stackPiles;
+    }
+    
     updateDeck(){
         this.deck.update();
     }
@@ -17,24 +22,21 @@ class Game {
         if(sourceDetails === "deck"){
             return this.deck;
         }
-        const source = sourceDetails.split("_");
-        return this.reservedPiles[source[1]];
+        const [source,id] = sourceDetails.split("_");
+        return this[source][id];
     }
 
     getDestination(destinationDetails){
-        const source = destinationDetails.split("_");
-        return this.reservedPiles[+source[1]];
+        const [destination,id] = destinationDetails.split("_");
+        return this[destination][id];
     }
 
     moveCard(sourceDetails,destinationDetails){
         const source = this.getSource(sourceDetails);
-        console.log(sourceDetails);
-        console.log(source);
         const destination = this.getDestination(destinationDetails);
-        console.log(destination);
-
-        const card = source.getCard(sourceDetails);
-        destination.addCard(card);
+        const noOfCards = sourceDetails.split("_")[2];
+        const cards = source.getCards(+noOfCards);
+        destination.addCards(cards);
     }
 
     getReservedPiles(){
