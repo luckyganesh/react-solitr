@@ -16,6 +16,7 @@ class ReservedPileView extends React.Component {
           className="card"
           onDrop={this.props.drop}
           onDragOver={this.props.allowDrop}
+          style={{"color":card.color}}
         >
           {card.getUnicode()}
         </div>

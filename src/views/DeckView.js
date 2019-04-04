@@ -16,7 +16,7 @@ export default class DeckView extends React.Component {
         const className = "card"
         if(deck.hasOpenCard()){
             const card = deck.getOpenCard();
-            return <div className={className} id="deck" draggable="true" onDragStart={drag}>{card.getUnicode()}</div>;
+            return <div style={{"color":card.color}} className={className} id="deck" draggable="true" onDragStart={drag}>{card.getUnicode()}</div>;
         }
         return <div className={className}>{EmptyCard}</div>;
     }
