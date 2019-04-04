@@ -13,7 +13,7 @@ class ReservedPileView extends React.Component {
           id={"reservedPiles_" + this.props.id}
           draggable="true"
           onDragStart={this.props.drag}
-          className="card"
+          className="card pile-separator"
           onDrop={this.props.drop}
           onDragOver={this.props.allowDrop}
           style={{"color":card.color}}
@@ -26,7 +26,7 @@ class ReservedPileView extends React.Component {
     return (
       <div
         id={"reservedPiles_" + this.props.id}
-        className="card"
+        className="card pile-separator"
         onDrop={this.props.drop}
         onDragOver={this.props.allowDrop}
       >

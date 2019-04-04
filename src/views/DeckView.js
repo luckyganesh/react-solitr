@@ -5,7 +5,7 @@ import {EmptyCard,Default} from '../data/cards'
 export default class DeckView extends React.Component {
 
     renderClosedCard(deck,updater){
-        const className = "card clickable"
+        const className = "card clickable pile-separator"
         if(deck.hasNext()){
             return <div className={className} onClick={updater} >{Default}</div>
         }
@@ -13,7 +13,7 @@ export default class DeckView extends React.Component {
     }
 
     renderOpenCard(deck,drag){
-        const className = "card"
+        const className = "card  pile-separator"
         if(deck.hasOpenCard()){
             const card = deck.getOpenCard();
             return <div style={{"color":card.color}} className={className} id="deck" draggable="true" onDragStart={drag}>{card.getUnicode()}</div>;

@@ -2,6 +2,7 @@ import React from "react";
 import { EmptyCard, Default } from "../data/cards";
 
 class StackPileView extends React.Component {
+
   renderClosedCards(stackPile, id) {
     return new Array(stackPile.getNoOfClosedCards()).fill(0).map(x => (
       <div className="card adjustable-card" id={"stackPiles_" + id}>
@@ -13,7 +14,7 @@ class StackPileView extends React.Component {
   renderOpenCards(stackPile, id, drag) {
     const openCards = stackPile.getOpenCards();
     const noOfOpenCards = openCards.length;
-    if(noOfOpenCards == 0){
+    if(noOfOpenCards === 0){
       return [];
     }
     return openCards.map((card, index) => {
@@ -38,7 +39,7 @@ class StackPileView extends React.Component {
       console.log("it came");
       return (
         <div
-          className="stack-pile"
+          className="stack-pile stack-pile-separator"
           id={"stackPiles_" + id}
           onDrop={drop}
           onDragOver={allowDrop}
@@ -50,7 +51,7 @@ class StackPileView extends React.Component {
 
     return (
       <div
-        className="stack-pile"
+        className="stack-pile stack-pile-separator"
         id={"stackPiles_" + id}
         onDrop={drop}
         onDragOver={allowDrop}
