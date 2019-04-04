@@ -16,6 +16,10 @@ class Deck {
         return this.openCards[this.openCards.length -1];
     }
 
+    getCard(){
+        return this.openCards.pop();
+    }
+    
     update(){
         if(this.closedCards.length === 0){
             this.closedCards = this.openCards.reverse();

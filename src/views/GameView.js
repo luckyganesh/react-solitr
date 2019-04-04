@@ -6,6 +6,9 @@ export default class GameView extends React.Component {
   constructor(props) {
     super(props);
     this.state = { game: props.game };
+    this.drag = this.drag.bind(this);
+    this.drop = this.drop.bind(this);
+    this.allowDrop = this.allowDrop.bind(this);
   }
 
   updateDeck() {
@@ -13,17 +16,36 @@ export default class GameView extends React.Component {
     this.setState(state => state);
   }
 
+  allowDrop(ev) {
+    // console.log(ev);
+    ev.preventDefault();
+  }
+  
+  drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+  }
+  
+  drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    this.state.game.moveCard(data,ev.target.id);
+    this.setState(state => state);
+    // ev.target.appendChild(document.getElementById(data));
+  }
+
   renderReservedPiles() {
-      const reservedPiles = this.state.game.getReservedPiles();
-      const reservedPilesJSX = [];
-      for(let reservedPileNumber = 0; reservedPileNumber < reservedPiles.length; reservedPileNumber++){
-        reservedPilesJSX.push(<ReservedPileView pile={reservedPiles[reservedPileNumber]}></ReservedPileView>)
-      }
-      return (
-          <div class="reserved-piles">
-              {reservedPilesJSX}
-          </div>
-      )
+    const reservedPiles = this.state.game.getReservedPiles();
+    const reservedPilesJSX = [];
+    for (
+      let reservedPileNumber = 0;
+      reservedPileNumber < reservedPiles.length;
+      reservedPileNumber++
+    ) {
+      reservedPilesJSX.push(
+        <ReservedPileView pile={reservedPiles[reservedPileNumber]} drag={this.drag} drop={this.drop} allowDrop={this.allowDrop} id={reservedPileNumber}/>
+      );
+    }
+    return <div class="reserved-piles">{reservedPilesJSX}</div>;
   }
 
   render() {
@@ -33,6 +55,7 @@ export default class GameView extends React.Component {
           <DeckView
             deck={this.state.game.getDeck()}
             updater={this.updateDeck.bind(this)}
+            drag={this.drag}
           />
           {this.renderReservedPiles()}
         </div>

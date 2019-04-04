@@ -1,22 +1,38 @@
-import React from 'react';
+import React from "react";
 
-import { EmptyCard } from '../data/cards';
+import { EmptyCard } from "../data/cards";
 
 class ReservedPileView extends React.Component {
+  render() {
+    const pile = this.props.pile;
 
-
-
-    render(){
-        const pile = this.props.pile;
-
-        if(pile.hasLastCard()){
-            const card = pile.getLastCard();
-            console.log(card);
-            return <div className="card">{card.getUnicode()}</div>;
-        }
-
-        return (<div className="card">{EmptyCard}</div>)
+    if (pile.hasLastCard()) {
+      const card = pile.getLastCard();
+      return (
+        <div
+          id={"reservedPile_" + this.props.id}
+          draggable="true"
+          onDragStart={this.props.drag}
+          className="card"
+          onDrop={this.props.drop}
+          onDragOver={this.props.allowDrop}
+        >
+          {card.getUnicode()}
+        </div>
+      );
     }
+
+    return (
+      <div
+        id={"reservedPile_" + this.props.id}
+        className="card"
+        onDrop={this.props.drop}
+        onDragOver={this.props.allowDrop}
+      >
+        {EmptyCard}
+      </div>
+    );
+  }
 }
 
 export default ReservedPileView;

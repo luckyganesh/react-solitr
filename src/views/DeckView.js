@@ -12,11 +12,11 @@ export default class DeckView extends React.Component {
         return <div className={className} onClick={updater}>{EmptyCard}</div>
     }
 
-    renderOpenCard(deck){
+    renderOpenCard(deck,drag){
         const className = "card"
         if(deck.hasOpenCard()){
             const card = deck.getOpenCard();
-            return <div className={className}>{card.getUnicode()}</div>;
+            return <div className={className} id="deck" draggable="true" onDragStart={drag}>{card.getUnicode()}</div>;
         }
         return <div className={className}>{EmptyCard}</div>;
     }
@@ -25,7 +25,7 @@ export default class DeckView extends React.Component {
         return (
             <div class="deck">
             {this.renderClosedCard(this.props.deck,this.props.updater)}
-            {this.renderOpenCard(this.props.deck)}
+            {this.renderOpenCard(this.props.deck,this.props.drag)}
             </div>
         )
     }
