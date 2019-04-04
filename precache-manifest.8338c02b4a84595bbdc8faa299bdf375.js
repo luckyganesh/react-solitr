@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "2ed71af4732285a8b4b3",
-    "url": "/react-solitr/static/css/main.8344e3d2.chunk.css"
+    "revision": "58955cb72c0f9fe7c042",
+    "url": "/react-solitr/static/css/main.962ac356.chunk.css"
   },
   {
-    "revision": "2ed71af4732285a8b4b3",
-    "url": "/react-solitr/static/js/main.db844f8a.chunk.js"
+    "revision": "58955cb72c0f9fe7c042",
+    "url": "/react-solitr/static/js/main.3236c2b4.chunk.js"
   },
   {
     "revision": "c68b4a2a2131c8ba2008",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/react-solitr/static/js/2.9bba1761.chunk.js"
   },
   {
-    "revision": "3675da19ef0e21ac04dcbdc82004ddb5",
+    "revision": "9d08645c5924b1ef33ff01328c108cba",
     "url": "/react-solitr/index.html"
   }
 ];
