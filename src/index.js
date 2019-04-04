@@ -1,12 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+//css
+import './main.css';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+//view models
+import GameView from './views/GameView';
+
+//game modles
+import Game from './modles/Game';
+import Deck from './modles/Deck';
+import cards from './data/cards';
+import lodash from 'lodash';
+import Card from './modles/Card'
+
+const shuffledCards = lodash.shuffle(cards);
+
+const deckCards = [];
+for(let cardNumber = 0; cardNumber < 24; cardNumber++){
+    const card = shuffledCards.shift()
+    deckCards.push(new Card(card));
+}
+
+const deck = new Deck(deckCards);
+const game = new Game(deck);
+
+ReactDOM.render(<GameView game={game}/>,document.getElementById('root'));

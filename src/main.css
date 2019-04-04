@@ -1,0 +1,14 @@
+.card {
+    font-size: 100px;
+
+    /* background-color: whitesmoke; */
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.deck {
+    display: flex;
+    flex-direction: row;
+}
