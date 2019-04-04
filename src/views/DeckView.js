@@ -1,7 +1,6 @@
 import React from 'react';
 
-const Default = "\u{1F0A0}";
-const emptyCard = "\u{1F0DF}"
+import {EmptyCard,Default} from '../data/cards'
 
 export default class DeckView extends React.Component {
 
@@ -10,7 +9,7 @@ export default class DeckView extends React.Component {
         if(deck.hasNext()){
             return <div className={className} onClick={updater} >{Default}</div>
         }
-        return <div className={className} onClick={updater}>{emptyCard}</div>
+        return <div className={className} onClick={updater}>{EmptyCard}</div>
     }
 
     renderOpenCard(deck){
@@ -19,7 +18,7 @@ export default class DeckView extends React.Component {
             const card = deck.getOpenCard();
             return <div className={className}>{card.getUnicode()}</div>;
         }
-        return <div className={className}>{emptyCard}</div>;
+        return <div className={className}>{EmptyCard}</div>;
     }
 
     render(){

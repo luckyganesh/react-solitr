@@ -1,6 +1,7 @@
 class Game {
-    constructor(deck){
+    constructor(deck,reservedPiles){
         this.deck = deck;
+        this.reservedPiles = reservedPiles;
     }
 
     getDeck(){
@@ -9,6 +10,10 @@ class Game {
 
     updateDeck(){
         this.deck.update();
+    }
+
+    getReservedPiles(){
+        return this.reservedPiles;
     }
 }
 

@@ -1,7 +1,11 @@
+.body {
+    height:600px;
+    width: 600px;
+}
+
+
 .card {
     font-size: 100px;
-
-    /* background-color: whitesmoke; */
 }
 
 .clickable {
@@ -9,6 +13,19 @@
 }
 
 .deck {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.top-cards {
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.reserved-piles {
     display: flex;
     flex-direction: row;
 }
