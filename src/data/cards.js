@@ -314,7 +314,14 @@ const Cards =
     }
   ]
 
-const EmptyCard = "\u{1F0DF}";
-const Default = "\u{1F0A0}";
+const EmptyCard = {
+  "color":"black",
+  "unicode":"\u{1F0DF}"
+}
+
+const Default = {
+  "color":"black",
+  "unicode": "\u{1F0A0}"
+}
 
 export { Cards ,EmptyCard ,Default };

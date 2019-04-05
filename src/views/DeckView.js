@@ -1,32 +1,44 @@
-import React from 'react';
+import React from "react";
 
-import {EmptyCard,Default} from '../data/cards'
+import { EmptyCard, Default } from "../data/cards";
+import CardView from "./CardView";
 
 export default class DeckView extends React.Component {
-
-    renderClosedCard(deck,updater){
-        const className = "card clickable pile-separator"
-        if(deck.hasNext()){
-            return <div className={className} onClick={updater} >{Default}</div>
-        }
-        return <div className={className} onClick={updater}>{EmptyCard}</div>
+  renderClosedCard(deck, updater) {
+    const className = "clickable pile-separator";
+    if (deck.hasNext()) {
+      return (
+        <CardView className={className} onClick={updater} card={Default} />
+      );
     }
+    return (
+      <CardView className={className} card={EmptyCard} onClick={updater} />
+    );
+  }
 
-    renderOpenCard(deck,drag){
-        const className = "card  pile-separator"
-        if(deck.hasOpenCard()){
-            const card = deck.getOpenCard();
-            return <div style={{"color":card.color}} className={className} id="deck" draggable="true" onDragStart={drag}>{card.getUnicode()}</div>;
-        }
-        return <div className={className}>{EmptyCard}</div>;
+  renderOpenCard(deck, drag) {
+    const className = "pile-separator";
+    if (deck.hasOpenCard()) {
+      const card = deck.getOpenCard();
+      return (
+        <CardView
+          className={className}
+          id="deck"
+          draggable="true"
+          onDragStart={drag}
+          card={card}
+        />
+      );
     }
+    return <CardView className={className} card={EmptyCard} />;
+  }
 
-    render(){
-        return (
-            <div class="deck">
-            {this.renderClosedCard(this.props.deck,this.props.updater)}
-            {this.renderOpenCard(this.props.deck,this.props.drag)}
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div class="deck">
+        {this.renderClosedCard(this.props.deck, this.props.updater)}
+        {this.renderOpenCard(this.props.deck, this.props.drag)}
+      </div>
+    );
+  }
 }

@@ -1,6 +1,7 @@
 import React from "react";
 
 import { EmptyCard } from "../data/cards";
+import CardView from "./CardView";
 
 class ReservedPileView extends React.Component {
   render() {
@@ -9,29 +10,26 @@ class ReservedPileView extends React.Component {
     if (pile.hasLastCard()) {
       const card = pile.getLastCard();
       return (
-        <div
+        <CardView
           id={"reservedPiles_" + this.props.id}
           draggable="true"
           onDragStart={this.props.drag}
-          className="card pile-separator"
+          className="pile-separator"
           onDrop={this.props.drop}
           onDragOver={this.props.allowDrop}
-          style={{"color":card.color}}
-        >
-          {card.getUnicode()}
-        </div>
+          card={card}
+        />
       );
     }
 
     return (
-      <div
+      <CardView
         id={"reservedPiles_" + this.props.id}
-        className="card pile-separator"
+        className="pile-separator"
         onDrop={this.props.drop}
         onDragOver={this.props.allowDrop}
-      >
-        {EmptyCard}
-      </div>
+        card={EmptyCard}
+      />
     );
   }
 }
