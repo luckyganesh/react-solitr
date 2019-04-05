@@ -16,7 +16,7 @@ export default class DeckView extends React.Component {
     );
   }
 
-  renderOpenCard(deck, drag) {
+  renderOpenCard(deck, drag, doubleClick) {
     const className = "pile-separator";
     if (deck.hasOpenCard()) {
       const card = deck.getOpenCard();
@@ -27,6 +27,7 @@ export default class DeckView extends React.Component {
           draggable="true"
           onDragStart={drag}
           card={card}
+          doubleClick={doubleClick}
         />
       );
     }
@@ -37,7 +38,7 @@ export default class DeckView extends React.Component {
     return (
       <div class="deck">
         {this.renderClosedCard(this.props.deck, this.props.updater)}
-        {this.renderOpenCard(this.props.deck, this.props.drag)}
+        {this.renderOpenCard(this.props.deck, this.props.drag,this.props.doubleClick)}
       </div>
     );
   }

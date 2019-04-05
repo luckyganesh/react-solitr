@@ -10,10 +10,17 @@ export default class GameView extends React.Component {
     this.drag = this.drag.bind(this);
     this.drop = this.drop.bind(this);
     this.allowDrop = this.allowDrop.bind(this);
+    this.placeCardToReserved = this.placeCardToReserved.bind(this);
   }
 
   updateDeck() {
     this.state.game.updateDeck();
+    this.setState(state => state);
+  }
+
+  placeCardToReserved(ev){
+    const sourceDetail = ev.target.id;
+    this.state.game.moveCardToReserved(sourceDetail);
     this.setState(state => state);
   }
 
@@ -63,6 +70,7 @@ export default class GameView extends React.Component {
           drag={this.drag}
           drop={this.drop}
           allowDrop={this.allowDrop}
+          doubleClick={this.placeCardToReserved}
         />
       );
     });
@@ -77,6 +85,7 @@ export default class GameView extends React.Component {
             deck={this.state.game.getDeck()}
             updater={this.updateDeck.bind(this)}
             drag={this.drag}
+            doubleClick={this.placeCardToReserved}
           />
           {this.renderReservedPiles()}
         </div>

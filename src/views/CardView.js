@@ -10,9 +10,10 @@ class CardView extends React.Component {
       draggable,
       onDragStart,
       onDrop,
-      onDragOver
+      onDragOver,
+      doubleClick
     } = this.props;
-
+    
     return (
       <div
         style={{ color: card.color }}
@@ -23,6 +24,7 @@ class CardView extends React.Component {
         onClick={onClick}
         onDrop={onDrop}
         onDragOver={onDragOver}
+        onDoubleClick={doubleClick}
       >
         {card.unicode}
       </div>

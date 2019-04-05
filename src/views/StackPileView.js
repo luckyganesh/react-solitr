@@ -15,7 +15,7 @@ class StackPileView extends React.Component {
       ));
   }
 
-  renderOpenCards(stackPile, id, drag) {
+  renderOpenCards(stackPile, id, drag, doubleClick) {
     const openCards = stackPile.getOpenCards();
     const noOfOpenCards = openCards.length;
     if (noOfOpenCards === 0) {
@@ -29,13 +29,14 @@ class StackPileView extends React.Component {
           id={"stackPiles_" + id + "_" + (noOfOpenCards - index)}
           onDragStart={drag}
           draggable="true"
+          doubleClick={doubleClick}
         />
       );
     });
   }
 
   render() {
-    const { stackPile, id, drag, drop, allowDrop } = this.props;
+    const { stackPile, id, drag, drop, allowDrop, doubleClick } = this.props;
     if (!stackPile.hasCard()) {
       return (
         <div
@@ -49,10 +50,9 @@ class StackPileView extends React.Component {
             id={"stackPiles_" + id}
             card={EmptyCard}
           />
-          </div>
+        </div>
       );
     }
-
     return (
       <div
         className="stack-pile stack-pile-separator"
@@ -61,7 +61,7 @@ class StackPileView extends React.Component {
         onDragOver={allowDrop}
       >
         {this.renderClosedCards(stackPile, id)}
-        {this.renderOpenCards(stackPile, id, drag)}
+        {this.renderOpenCards(stackPile, id, drag, doubleClick)}
       </div>
     );
   }
